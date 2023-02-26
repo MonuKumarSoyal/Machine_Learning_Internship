@@ -1,0 +1,9 @@
+My name is Monu
+ and 
+i live in Rajasthan.
+This is a source file
+ and 
+output file will be craeted based on it.
+There should be two people
+ but 
+i am seeing only one people.
