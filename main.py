@@ -12,17 +12,19 @@ source_sents = [line.strip() for line in lines]
 
 # initializing delim
 delim = " and "
-list_of_conjuctions = [" and ", " but ", " yet ", " although ", " so ", " whereas ", " however ", " because "]
+list_of_conjuctions = [" and ", " but ", " yet ", " although ", " so ", " whereas ", " however ", 
+                       " because ", ", but ", ", ", ", so ", ", because ", ", whereas ",
+                         ", although ", " as if ", ", and "]
 
 # below list will be the list containing the list of sentences are appearing in one line.
 output_list = []
 for i in source_sents:
     # temp = i.split(delim)
-    temp = re.split('( and | but | yet | although | so | whereas | however | because )', i)
+    temp = re.split('( and | but | yet | although | so | if | as if | whereas | however | because |, and |, but |, so |, because |, whereas |, although |, )', i)
     output_list.append(temp)
 print(output_list)
 
-print("-----------------------------------------")
+# print("-----------------------------------------")
 
 
 # index = 0
@@ -51,8 +53,7 @@ print("-----------------------------------------")
 
 sent = 0
 for lst in output_list:                   # output_list is list of list
-  temp = lst.copy()                      # lst is the list containing phrases and conjuctions of a sentences(line).
-  print("hello ")
+  temp = lst.copy()                      # lst is the list containing phrases and conjuctions of a sentences(line).  print("hello ")
   index = 0
   while(index!=len(temp)):
      if temp[index] in list_of_conjuctions:
@@ -67,7 +68,7 @@ for lst in output_list:                   # output_list is list of list
           temp.pop(index)
           index-=2
      index+=1
-  print(temp)
+  # print(temp)
   output_list[sent] = temp
   sent+=1
            
