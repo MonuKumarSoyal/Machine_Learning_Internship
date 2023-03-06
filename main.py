@@ -14,15 +14,15 @@ source_sents = [line.strip() for line in lines]
 delim = " and "
 list_of_conjuctions = [" and ", " but ", " yet ", " although ", " so ", " whereas ", " however ", 
                        " because ", ", but ", ", ", ", so ", ", because ", ", whereas ",
-                         ", although ", " as if ", ", and "]
+                         ", although ", ", and ", " if "]
 
 # below list will be the list containing the list of sentences are appearing in one line.
 output_list = []
 for i in source_sents:
     # temp = i.split(delim)
-    temp = re.split('( and | but | yet | although | so | if | as if | whereas | however | because |, and |, but |, so |, because |, whereas |, although |, )', i)
+    temp = re.split('( and | but | yet | although | so | if | whereas | however | because |, and |, but |, so |, because |, whereas |, although |, )', i)
     output_list.append(temp)
-print(output_list)
+# print(output_list)
 
 # print("-----------------------------------------")
 
