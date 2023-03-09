@@ -57,16 +57,18 @@ for lst in output_list:                   # output_list is list of list
   index = 0
   while(index!=len(temp)):
      if temp[index] in list_of_conjuctions:
-        pre_list = temp[index-1].split(" ")
-        post_list = temp[index+1].split(" ")
-        if(len(pre_list) >= 6 and len(post_list) >=6):
-          temp.pop(index)
-          index-=1
-        else:
-          temp[index-1] = temp[index-1] + temp[index] + temp[index+1]
-          temp.pop(index)
-          temp.pop(index)
-          index-=2
+        # pre_list = temp[index-1].split(" ")
+        # post_list = temp[index+1].split(" ")
+        temp.pop(index)
+        index-=1
+        # if(len(pre_list) >= 6 and len(post_list) >=6):
+        #   temp.pop(index)
+        #   index-=1
+        # else:
+        #   temp[index-1] = temp[index-1] + temp[index] + temp[index+1]
+        #   temp.pop(index)
+        #   temp.pop(index)
+        #   index-=2
      index+=1
   # print(temp)
   output_list[sent] = temp

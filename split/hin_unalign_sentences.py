@@ -1,7 +1,7 @@
 import re
+import xlsxwriter
 
 input_file = "hindi.txt"
-output_file = "dec_2022_hindi_output.txt"
 
 with open(input_file, "r") as source:
   lines = source.readlines()
@@ -11,7 +11,7 @@ source_sents = [line.strip() for line in lines]
 
 
 # initializing delim
-delim = " and "
+# delim = " and "
 list_of_conjuctions = [" और ", ", ", "। "]
 
 # below list will be the list containing the list of sentences are appearing in one line.
@@ -47,18 +47,44 @@ for lst in output_list:                   # output_list is list of list
            
 
 
+row = 0
+column = 0
+
+output_file = xlsxwriter.Workbook('dec_2022_hindi_output.xlsx')
+worksheet = output_file.add_worksheet()
+
+for line in output_list:
+  for sent in line:
+    if sent == '':
+      worksheet.write(row, column, sent)
+    else:
+      worksheet.write(row, column, sent)
+      row+=1
+
+# row = 0
+# column = 1
+
+
+# for line in output_eng_list:
+#   for sent in line:
+#     worksheet.write(row, column, sent)
+#     row+=1
+
+output_file.close()
+
+
 
 # print(output_list)
 
 
 # Save the translations to the a file
-with open(output_file, "w+") as target:
-  for line in output_list:
-    for sent in line:
-        if sent == '':
-           target.write(sent)
-        else:
-          target.write(sent + "\n")
+# with open(output_file, "w+") as target:
+#   for line in output_list:
+#     for sent in line:
+#         if sent == '':
+#            target.write(sent)
+#         else:
+#           target.write(sent + "\n")
         # if sent[-1] == '.':
         #     list_of_char = list(sent)
         #     list_of_char[0] = list_of_char[0].upper()

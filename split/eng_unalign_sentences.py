@@ -1,7 +1,7 @@
 import re
+import xlsxwriter
 
-input_file = "english.txt"
-output_file = "dec_2022_english_output.txt"
+input_file = "eng_nov.txt"
 
 with open(input_file, "r") as source:
   lines = source.readlines()
@@ -26,7 +26,7 @@ for i in source_sents:
 
 sent = 0
 for lst in output_list:                   # output_list is list of list
-  temp = lst.copy()                      # lst is the list containing phrases and conjuctions of a sentences(line).  print("hello ")
+  temp = lst.copy()                      # lst is the list containing phrases and conjuctions of a sentences(line)
   index = 0
   while(index!=len(temp)):
      if temp[index] in list_of_conjuctions:
@@ -51,14 +51,39 @@ for lst in output_list:                   # output_list is list of list
 # print(output_list)
 
 
+row = 0
+column = 0
+
+output_file = xlsxwriter.Workbook('dec_2022_english_output.xlsx')
+worksheet = output_file.add_worksheet()
+
+for line in output_list:
+  for sent in line:
+    if sent == '':
+      worksheet.write(row, column, sent)
+    else:
+      worksheet.write(row, column, sent)
+      row+=1
+
+# row = 0
+# column = 1
+
+
+# for line in output_eng_list:
+#   for sent in line:
+#     worksheet.write(row, column, sent)
+#     row+=1
+
+output_file.close()
+
 # Save the translations to the a file
-with open(output_file, "w+") as target:
-  for line in output_list:
-    for sent in line:
-        if sent == '':
-           target.write(sent)
-        else:
-          target.write(sent + "\n")
+# with open(output_file, "w+") as target:
+#   for line in output_list:
+#     for sent in line:
+#         if sent == '':
+#            target.write(sent)
+#         else:
+#           target.write(sent + "\n")
         # if sent[-1] == '.':
         #     list_of_char = list(sent)
         #     list_of_char[0] = list_of_char[0].upper()
